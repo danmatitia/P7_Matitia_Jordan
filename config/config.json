@@ -4,20 +4,23 @@
     "password": "ouhgommubfzlbvziu",
     "database": "groupomania",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "port": "3700"
   },
   "test": {
     "username": "root",
     "password": "ouhgommubfzlbvziu",
     "database": "groupomania",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "port": "3700"
   },
   "production": {
     "username": "root",
     "password": "ouhgommubfzlbvziu",
     "database": "groupomania",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "port": "3700"
   }
 }

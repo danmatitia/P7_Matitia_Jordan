@@ -9,7 +9,7 @@ router.post("/signup", userCtrl.signup);
 router.post("/login", userCtrl.login);
 
 router.get("/profile/:id", auth, userCtrl.getOneProfile);
-router.get("/profile/:id/posts", auth, userCtrl.getAllMessagesProfile);
+router.get("/profile/:id/messages", auth, userCtrl.getAllMessagesProfile);
 router.put("/profile/:id", auth, userCtrl.modifyProfile);
 router.delete("/profile/:id", auth, userCtrl.deleteProfile);
 
