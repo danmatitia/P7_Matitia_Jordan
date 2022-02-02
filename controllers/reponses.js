@@ -1,4 +1,4 @@
-const { reponses, user } = require("../models");
+const { Reponses, user } = require("../models");
 
 
 //CREATE reponses 
@@ -8,8 +8,8 @@ exports.createReponses = (req, res, next) => {
   }
   Reponses.create({
     iduser: res.locals.userId,
-    idMessages: req.params.postId,
-    reponses: req.body.reponses,
+    idmessages: req.params.messagesId,
+    content: req.body.content,
   })
     .then(() => res.status(200).json({ message: "Commentaire envoyé !" }))
     .catch((error) => res.status(500).json(error));
@@ -19,7 +19,7 @@ exports.createReponses = (req, res, next) => {
 
 exports.getAllReponses = (req, res, next) => {
   Reponses.findAll({
-    where: { idMessages: req.params.messagesId },
+    where: { idmessages: req.params.messagesId },
     order: [["updatedAt", "DESC"]],
     include: [{ model: user, attributes: ["firstName", "lastName", "id"] }],
   })

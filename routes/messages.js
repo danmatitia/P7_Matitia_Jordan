@@ -6,7 +6,7 @@ const multer = require("../middleware/multer-config"); // Permet d'envoyer un fi
 
 // ROUTES
 router.get("/", auth, messagesCtrl.getAllMessages);
-router.get("/:id", auth, messagesCtrl.getOneMessage);
+router.get("/:id", auth, messagesCtrl.getOneMessages);
 router.post("/", auth, multer, messagesCtrl.createMessages);
 router.delete("/:id", auth, messagesCtrl.deleteMessages);
 

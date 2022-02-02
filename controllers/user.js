@@ -2,7 +2,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const passwordValidator = require("password-validator");
 require("dotenv").config();
-const { user, messages } = require("../models");
+const { user, Messages } = require("../models");
 
 //creation du schemas
 let schema = new passwordValidator();
@@ -185,7 +185,7 @@ exports.deleteProfile = async (req, res, next) => {
 
 // get all profils 
 
-exports.getAllPostProfile = (req, res, next) => {
+exports.getAllMessagesProfile = (req, res, next) => {
   Messages.findAll({
     order: [["updatedAt", "DESC"]],
     attributes: [

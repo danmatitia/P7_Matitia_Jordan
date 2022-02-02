@@ -1,5 +1,7 @@
 // MODULES
 const jwt = require("jsonwebtoken"); // Crée et check un token d'identification sécurisé
+const dotenv = require("dotenv");
+require('dotenv').config();
 
 // MIDDLEWARE AUTH
 module.exports = (req, res, next) => {

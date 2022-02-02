@@ -41,7 +41,7 @@ const main = async () => {
     await db.sequelize.authenticate();
     await db.sequelize.sync({ alter: true }); //à ne pas mettre quand le site est visible par les clients, actualise les changement en temps réelle.
 
-    const server = http.createServer(app); /*creation du serveur*/
+const server = http.createServer(app); /*creation du serveur*/
 
 server.on('error', errorHandler);
 server.on('listening', () => {

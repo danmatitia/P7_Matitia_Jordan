@@ -1,4 +1,4 @@
-const { Post, User } = require("../models");
+const { messages, user } = require("../models");
 const fs = require("fs-extra");
 
 // CREATE messages
