@@ -5,9 +5,11 @@ const auth = require("../middleware/auth"); // Crée un token d'identification
 const multer = require("../middleware/multer-config"); // Permet d'envoyer un fichier dans la requête
 
 // ROUTES
-router.get("/", auth, messagesCtrl.getAllMessages);
+router.get("/", auth, messagesCtrl.getAllMessages); //je vais chercher la methode get all message
 router.get("/:id", auth, messagesCtrl.getOneMessages);
-router.post("/", auth, multer, messagesCtrl.createMessages);
+router.post("/", auth, multer, messagesCtrl.createMessage);
 router.delete("/:id", auth, messagesCtrl.deleteMessages);
 
 module.exports = router;
+
+

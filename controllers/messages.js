@@ -1,9 +1,9 @@
-const { messages, user } = require("../models");
+const { Messages, user } = require("../models");
 const fs = require("fs-extra");
 
 // CREATE messages
 
-exports.createMessages = (req, res, next) => {
+exports.createMessage = (req, res, next) => {
   if (req.body.title === "" || req.body.content === "") {
     return res.status(400).json({ error: "Merci de remplir tous les champs." });
   }
@@ -49,7 +49,7 @@ exports.getAllMessages = (_req, res) => {
     });
 };
 
-//GETONE messages
+// poster un messages
 exports.getOneMessages = async (req, res, next) => {
   try {
     const messages = await Messages.findOne({

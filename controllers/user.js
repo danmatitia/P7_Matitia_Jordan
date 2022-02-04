@@ -3,55 +3,44 @@ const jwt = require("jsonwebtoken");
 const passwordValidator = require("password-validator");
 require("dotenv").config();
 const { user, Messages } = require("../models");
+const SECRET = process.env.SECRET;
 
 //creation du schemas
 let schema = new passwordValidator();
+
 schema
-  .is()
-  .min(8) //au moins 8 caractères
-  .is()
-  .max(20) // pas plus de 20 caractères
-  .has()
-  .uppercase() // au moins une minuscule
-  .has()
-  .lowercase() // au moins une majuscule
-  .has()
-  .digits(1) // au moins un chiffre
-  .has()
-  .not()
-  .spaces() //pas d'espaces
-  .is()
-  .not()
-  .oneOf(["Passw0rd", "Password123"]);
+  .is().min(8) //au moins 8 caractères
+  .is().max(20) // pas plus de 20 caractères
+  .has().uppercase() // au moins une minuscule
+  .has().lowercase() // au moins une majuscule
+  .has().digits() // au moins un chiffre
+  .has().not().spaces() //pas d'espaces
+  .is().not().oneOf(["Passw0rd", "Password123"]);
+  
+const regexEmail = /\S+@\S+\.\S+/
 
-const regexEmail =
-  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-
-  //Sinscrire 
+  //créer un nouvel utilisateur 
 
 exports.signup = async (req, res, next) => {
   const { email, firstname, lastname, password } = req.body;
   if (!regexEmail.test(email)) {
-    return res.status(400).json({ error: "Email incorrect" });
+    res.status(400).json({ error: "Email incorrect" });
   }
   if (!schema.validate(password)) {
     res.status(400).json({
       error:
         "le mot de passe doit contenir au moins 8 caractères dont 1 chiffre, 1 lettre majuscule et 1 minuscule",
     });
-    return;
   }
   const isFieldsEmpty = !email || !firstname || !lastname || !password;
 
   if (isFieldsEmpty) {
     // si vide ou n existe pas
     res.status(400).json({ error: "Merci de remplir tous les champs !" });
-    return;
   }
   try {
     const hash = await bcrypt.hash(password, 10);
-    const user = await user.create({
+    const User = await user.create({ //creation du user
       email: email,
       firstname: firstname,
       lastname: lastname,
@@ -62,9 +51,11 @@ exports.signup = async (req, res, next) => {
       isAdmin: user.isAdmin,
     });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error });
   }
 };
+console.log(user);
 
 // Se connecter 
 
@@ -76,8 +67,8 @@ exports.login = async (req, res, next) => {
       .json({ error: "Merci de remplir tous les champs !" });
   }
   try {
-    const user = await user.findOne({ where: { email } });
-    const isValid = await bcrypt.compare(password, user.password);
+    const User = await user.findOne({ where: { email } }); //cherche si mon user existe a partir de l'email
+    const isValid = await bcrypt.compare(password, User.password);
     if (!isValid) {
       res.status(401).json({ error: "Utilisateur non trouvé !" });
       return;
@@ -87,13 +78,13 @@ exports.login = async (req, res, next) => {
       isAdmin: user.isAdmin,
       firstname: user.firstname,
       lastname: user.lastname,
-      token: jwt.sign(
-        /*et avec un token /// 3 arguments demandés: */
+      token: jwt.sign( //
+        /*et avec un token /// 2 arguments demandés: */
         {
           userId: user.id,
           isAdmin: user.isAdmin,
         } /*correspondance de l'id utilisateur*/,
-        process.env.TOKEN /*l e token*/,
+        process.env.SECRET, /*le token*/
         { expiresIn: "24h" }
       ),
     });
