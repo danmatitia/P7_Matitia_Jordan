@@ -100,6 +100,7 @@ exports.getOneProfile = (req, res, next) => {
     attributes: ["id", "email", "firstname", "lastname"],
     where: { id: req.params.id },
   })
+  console.log(user)
     .then((user) => {
       res.status(200).json(user);
     })
