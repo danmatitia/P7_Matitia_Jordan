@@ -17,7 +17,7 @@
       </div>
       <div id="profil">
         <!-- Email, Nom et prénom du profil -->
-        <div v-if="dataProfile">
+         <div v-if="dataProfile">
           <p>E-mail :{{ " " + dataProfile.email }}</p>
           <p>
             Prénom et Nom :
@@ -75,9 +75,7 @@ import axios from "axios";
 import cardMessages from "../components/cardMessages";
 export default {
   name: "profile",
-  components: {
-    cardMessages,
-  },
+  components: {cardMessages,},
   props: {
     id: Number,
   },
@@ -165,7 +163,7 @@ export default {
   mounted() {
     /*appeler les fonctions quand l'html sera pret*/
     this.loadProfile();
-    this.allPostsProfile();
+    this.allMessagesProfile();
   },
 };
 </script>

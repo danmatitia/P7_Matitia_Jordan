@@ -91,7 +91,7 @@ export default {
   align-items: center;
 }
 .login input {
-  width: 500px;
+  width: 30%;
   margin-bottom: 15px;
   max-width: 94%;
   border-style: solid;

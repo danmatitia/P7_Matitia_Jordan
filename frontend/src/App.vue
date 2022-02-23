@@ -37,8 +37,8 @@ body {
   background-color: #d6dfe2;
 }
 #logo {
-  width: 400px;
-  max-width: 80%;
+  width: 56%;
+  max-width: 100%;
 }
 #navlogo {
   display: flex;
@@ -47,7 +47,7 @@ body {
   flex-direction: column;
   background-color: #31bcc6;
   margin: -10px -10px 0px -10px;
-  height: 90px;
+  height: 115px;
 }
 nav {
   display: flex;
@@ -56,7 +56,7 @@ nav {
   flex-direction: column;
   background-color: #d2fafa;
   margin: 0px -10px 0px -10px;
-  height: 40px;
+  height: 50px;
 }
 nav li {
   display: inline-block;

@@ -49,7 +49,7 @@ export default {
     },
     buttonNewMessages() {
       const data = new FormData();
-      //avec image
+      //avec une image
       if (this.file !== null) {
         data.append("userId", this.userId);
         data.append("title", this.title);
