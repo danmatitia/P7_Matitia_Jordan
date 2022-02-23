@@ -31,16 +31,15 @@ export default {
 };
 </script>
 
+
 <style>
 body {
   background-color: #d6dfe2;
 }
-
 #logo {
   width: 400px;
   max-width: 80%;
 }
-
 #navlogo {
   display: flex;
   justify-content: center;
@@ -50,15 +49,6 @@ body {
   margin: -10px -10px 0px -10px;
   height: 90px;
 }
-
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
 nav {
   display: flex;
   justify-content: center;
@@ -73,8 +63,14 @@ nav li {
   margin: 0 8px;
 }
 .deco {
-  color: rgb(240, 217, 13);
+  color: rgb(216, 41, 41);
   cursor: pointer;
 }
-
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #000000;
+}
 </style>
