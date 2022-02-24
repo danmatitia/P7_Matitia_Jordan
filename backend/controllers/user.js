@@ -21,8 +21,9 @@ const regexEmail = /\S+@\S+\.\S+/
 
   //créer un nouvel utilisateur 
 
-exports.signup = async (req, res, next) => {
-  const { email, firstname, lastname, password } = req.body;
+exports.signup = async (req, res) => {
+  // Valider les paramètres de la requète
+  const { email, firstname, lastname, password } = req.body; 
   if (!regexEmail.test(email)) {
     res.status(400).json({ error: "Email incorrect" });
   }
@@ -74,14 +75,15 @@ exports.login = async (req, res, next) => {
       return;
     }
     res.status(200).json({
-      userId: user.id /* avec l'id */,
+      userId: user.id, // avec l'id 
       isAdmin: user.isAdmin,
       firstname: user.firstname,
       lastname: user.lastname,
       token: jwt.sign( //
-        /*et avec un token /// 2 arguments demandés: */
+        //et avec un token /// 2 arguments demandés: 
         {
           userId: user.id,
+          SERCET,
           isAdmin: user.isAdmin,
         } /*correspondance de l'id utilisateur*/,
         process.env.SECRET, /*le token*/

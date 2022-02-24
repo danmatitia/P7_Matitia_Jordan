@@ -85,7 +85,7 @@ exports.deleteMessages = async (req, res, next) => {
     const messages = await Messages.findOne({ where: { id: req.params.id } });
     if (!messages) {
       res.status(404).json({
-        message: "Post not found",
+        message: "Message not found",
       });
       return;
     }

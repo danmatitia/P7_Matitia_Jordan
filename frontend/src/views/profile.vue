@@ -25,12 +25,12 @@
           </p>
           <hr />
         </div>
-        <div v-else id="chargement">
+        <!-- <div v-else id="chargement">
           Chargement
           <span></span>
           <span></span>
           <span></span>
-        </div>
+        </div> -->
         <!-- modification Nom et prénom du profil -->
         <form method="post" @submit.prevent="updateProfile">
           <div>
@@ -75,8 +75,8 @@ import axios from "axios";
 import cardMessages from "../components/cardMessages";
 export default {
   name: "profile",
-  components: {cardMessages,},
-  props: {
+  components: { cardMessages },
+  props: { 
     id: Number,
   },
   data() {

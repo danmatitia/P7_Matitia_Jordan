@@ -40,6 +40,7 @@
 <script>
 import axios from "axios";
 export default {
+  name :"login",
   data() {
     return {
       token: "",
@@ -51,14 +52,13 @@ export default {
   },
   methods: {
     async buttonLogin() {
-      await axios
-        .post("/api/auth/login", {
+      await axios.post("/api/auth/login", {
           email: this.email,
           password: this.password,
         })
         .then((res) => {
           {
-            localStorage.setItem("token", res.data.TOKEN);
+            localStorage.setItem("token", res.data.token);
             localStorage.setItem("id", res.data.userId);
             localStorage.setItem("isAdmin", res.data.isAdmin);
           }

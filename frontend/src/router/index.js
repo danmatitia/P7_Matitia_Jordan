@@ -3,9 +3,9 @@ import Home from '../views/Accueil.vue'
 
 const routes = [
   {
-    path: "/",
-    name: "feed",
-    component: () => import("../views/feed.vue"),
+    path: '/',
+    name: 'feed',
+    component: () => import('../views/feed.vue'),
   },
   {
     path: '/',
@@ -13,14 +13,14 @@ const routes = [
     component: Home
   },
   {
-    path: "/signup",
-    name: "signup",
-    component: () => import("../views/signup.vue"),
+    path: '/signup',
+    name: 'signup',
+    component: () => import('../views/signup.vue'),
   },
   {
-    path: "/login",
-    name: "login",
-    component: () => import("../views/login.vue"),
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/login.vue'),
   },
   {
     path: '/profile',
@@ -31,15 +31,15 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/profile.vue')
   },
   {
-    path: "/messages/:id",
-    name: "messages",
+    path: '/messages/:id',
+    name: 'messages',
     component: () => import('../views/oneMessages.vue'),
   },
   {
-    path: "/404",
-    name: "404",
-    component: () => import("../views/404.vue"),
-  }
+    path: '/404',
+    name: '404',
+    component: () => import('../views/404.vue'),
+  },
 ]
 
 const router = createRouter({
