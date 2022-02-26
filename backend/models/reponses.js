@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
           allowNull: false,
         },
       });
-      models.reponses.belongsTo(models.messages, {
+      models.reponses.belongsTo(models.Messages, {
         foreignKey: {
           name: "idmessages",
           allowNull: false,

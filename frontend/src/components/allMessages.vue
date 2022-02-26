@@ -1,14 +1,14 @@
 <template>
   <div v-if="!loading" id="allMessages">
     <h3 class="title">Liste des messages</h3>
-    <card-messages
-      :key="messages.id"
-      v-for="messages of messages"
-      :title="messages.title"
-      :content="messages.content"
-      :user="messages.User"
-      :image="messages.image"
-      :id="messages.id"
+    <card-Messages
+      :key="Messages.id"
+      v-for="Messages of messages"
+      :title="Messages.title"
+      :content="Messages.content"
+      :user="Messages.User"
+      :image="Messages.image"
+      :id="Messages.id"
     />
   </div>
   <div v-else id="chargement">

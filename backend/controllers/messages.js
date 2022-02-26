@@ -70,7 +70,7 @@ exports.getOneMessages = async (req, res, next) => {
       });
       return;
     }
-    res.status(200).json(post);
+    res.status(200).json(messages);
   } catch (error) {
     res.status(404).json({
       error: error,

@@ -17,7 +17,7 @@ schema
   .has().not().spaces() //pas d'espaces
   .is().not().oneOf(["Passw0rd", "Password123"]);
   
-const regexEmail = /\S+@\S+\.\S+/
+const regexEmail = /\S+@groupomania.com\.\S+/
 
   //créer un nouvel utilisateur 
 
@@ -48,8 +48,8 @@ exports.signup = async (req, res) => {
       password: hash,
     });
     res.status(201).json({
-      userId: user.id,
-      isAdmin: user.isAdmin,
+      userId: User.id,
+      isAdmin: User.isAdmin,
     });
   } catch (error) {
     console.error(error);
@@ -75,15 +75,14 @@ exports.login = async (req, res, next) => {
       return;
     }
     res.status(200).json({
-      userId: user.id, // avec l'id 
-      isAdmin: user.isAdmin,
-      firstname: user.firstname,
-      lastname: user.lastname,
+      userId: User.id, // avec l'id 
+      isAdmin: User.isAdmin,
+      firstname: User.firstname,
+      lastname: User.lastname,
       token: jwt.sign( //
         //et avec un token /// 2 arguments demandés: 
         {
           userId: user.id,
-          SERCET,
           isAdmin: user.isAdmin,
         } /*correspondance de l'id utilisateur*/,
         process.env.SECRET, /*le token*/
@@ -102,9 +101,8 @@ exports.getOneProfile = (req, res, next) => {
     attributes: ["id", "email", "firstname", "lastname"],
     where: { id: req.params.id },
   })
-  console.log(user)
-    .then((user) => {
-      res.status(200).json(user);
+    .then((users) => {
+      res.status(200).json(users);
     })
     .catch((error) => {
       res.status(404).json({
@@ -125,18 +123,18 @@ exports.modifyProfile = async (req, res, next) => {
       });
       return;
     }
-    const user = await user.findOne({ where: { id: req.params.id } });
+    const User = await user.findOne({ where: { id: req.params.id } });
     if (user.id === res.locals.userId || res.locals.isAdmin) {
-      await user.update({
+      await User.update({
         firstname: req.body.firstname,
         lastname: req.body.lastname,
       });
       res.status(200).json({
         message: "Profil modifié !",
-        user: {
-          firstname: user.firstname,
-          lastname: user.lastname,
-          email: user.email,
+        User: {
+          firstname: User.firstname,
+          lastname: User.lastname,
+          email: User.email,
         },
       });
     }
@@ -152,8 +150,8 @@ exports.modifyProfile = async (req, res, next) => {
 
 exports.deleteProfile = async (req, res, next) => {
   try {
-    const user = await user.findOne({ where: { id: req.params.id } });
-    if (!user) {
+    const User = await user.findOne({ where: { id: req.params.id } });
+    if (!User) {
       res.status(404).json({
         message: "user not found",
       });
@@ -165,7 +163,7 @@ exports.deleteProfile = async (req, res, next) => {
       });
       return;
     }
-    await user.destroy();
+    await User.destroy();
     res.status(200).json({
       message: "user deleted",
     });
@@ -194,8 +192,8 @@ exports.getAllMessagesProfile = (req, res, next) => {
     where: { iduser: res.locals.userId },
     include: [{ model: user, attributes: ["firstname", "lastname"] }],
   })
-    .then((messages) => {
-      res.status(200).json(messages);
+    .then((message) => {
+      res.status(200).json(message);
     })
     .catch((error) => {
       res.status(400).json({

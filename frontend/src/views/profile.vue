@@ -108,8 +108,7 @@ export default {
     },
     allMessagesProfile() {
       let userId = localStorage.getItem("id");
-      axios
-        .get("/api/auth/profile/" + userId + "/messages")
+      axios.get("/api/auth/profile/" + userId + "/messages")
         .then((res) => {
           this.messages = res.data;
         })

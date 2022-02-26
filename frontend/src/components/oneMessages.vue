@@ -5,6 +5,7 @@
         <h1>{{ messages.title }}</h1>
         <p>{{ messages.content }}</p>
         <img :src="messages.image" />
+        <!-- <img src="http://localhost:3700/images/monimage.png"> -->
         <div>
           <button
             v-if="messages.iduser === me || isAdmin"
@@ -72,7 +73,7 @@ export default {
           if (error.status === 401) {
             this.$router.push("/login");
           }
-        })
+        });
       } catch (error) {
         console.log(error);
       }

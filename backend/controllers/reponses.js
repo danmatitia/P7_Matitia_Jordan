@@ -8,8 +8,8 @@ exports.createReponses = (req, res, next) => {
   }
   Reponses.create({
     iduser: res.locals.userId,
-    idMessages: req.params.messagesId,
-    content: req.body.content,
+    idmessages: req.params.messagesId,
+    reponses: req.body.reponses,
   })
     .then(() => res.status(200).json({ message: "Commentaire envoyé !" }))
     .catch((error) => res.status(500).json(error));
