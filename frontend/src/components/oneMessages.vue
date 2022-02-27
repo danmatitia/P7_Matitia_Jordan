@@ -5,7 +5,6 @@
         <h1>{{ messages.title }}</h1>
         <p>{{ messages.content }}</p>
         <img :src="messages.image" />
-        <!-- <img src="http://localhost:3700/images/monimage.png"> -->
         <div>
           <button
             v-if="messages.iduser === me || isAdmin"
@@ -25,9 +24,9 @@
             {{ reponses.reponses }}
           </p>
           <p class="commDe">
-            Publié par {{ reponses.User.firstName }} {{ reponses.User.lastName }}
+            Publié par {{ reponses.user.firstName }} {{ reponses.user.lastName }}
           </p>
-          <div v-if="reponses.User.id === me || isAdmin">
+          <div v-if="reponses.user.id === me || isAdmin">
             <button @click.prevent="deleteReponses(reponses.id)">
               Supprimer
             </button>

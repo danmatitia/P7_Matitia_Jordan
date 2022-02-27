@@ -5,14 +5,14 @@
       <!-- ICI ajouter de quoi afficher les messages du profil -->
       <div class="les-messages">
         <h3>Mes messages</h3>
-        <cardMessages
-          :key="messages.id"
-          v-for="messages of messages"
-          :title="messages.title"
-          :content="messages.content"
-          :user="messages.User"
-          :image="messages.image"
-          :id="messages.id"
+        <card-Messages
+          :key="Messages.id"
+          v-for="Messages of messages"
+          :title="Messages.title"
+          :content="Messages.content"
+          :user="Messages.user"
+          :image="Messages.image"
+          :id="Messages.id"
         />
       </div>
       <div id="profil">
@@ -25,12 +25,12 @@
           </p>
           <hr />
         </div>
-        <!-- <div v-else id="chargement">
+        <div v-else id="chargement">
           Chargement
           <span></span>
           <span></span>
           <span></span>
-        </div> -->
+        </div> 
         <!-- modification Nom et prénom du profil -->
         <form method="post" @submit.prevent="updateProfile">
           <div>

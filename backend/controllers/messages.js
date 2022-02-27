@@ -39,8 +39,8 @@ exports.getAllMessages = (_req, res) => {
     ],
     include: [{ model: user, attributes: ["firstname", "lastname"] }],
   })
-    .then((messages) => {
-      res.status(200).json(messages);
+    .then((message) => {
+      res.status(200).json(message);
     })
     .catch((error) => {
       res.status(400).json({

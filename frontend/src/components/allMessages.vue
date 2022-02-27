@@ -6,7 +6,7 @@
       v-for="Messages of messages"
       :title="Messages.title"
       :content="Messages.content"
-      :user="Messages.User"
+      :user="Messages.user"
       :image="Messages.image"
       :id="Messages.id"
     />

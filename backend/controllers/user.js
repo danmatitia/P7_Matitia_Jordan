@@ -17,7 +17,7 @@ schema
   .has().not().spaces() //pas d'espaces
   .is().not().oneOf(["Passw0rd", "Password123"]);
   
-const regexEmail = /\S+@groupomania.com\.\S+/
+const regexEmail = /\S+@groupomania\.\S+/
 
   //créer un nouvel utilisateur 
 
@@ -82,8 +82,8 @@ exports.login = async (req, res, next) => {
       token: jwt.sign( //
         //et avec un token /// 2 arguments demandés: 
         {
-          userId: user.id,
-          isAdmin: user.isAdmin,
+          userId: User.id,
+          isAdmin: User.isAdmin,
         } /*correspondance de l'id utilisateur*/,
         process.env.SECRET, /*le token*/
         { expiresIn: "24h" }
@@ -101,8 +101,8 @@ exports.getOneProfile = (req, res, next) => {
     attributes: ["id", "email", "firstname", "lastname"],
     where: { id: req.params.id },
   })
-    .then((users) => {
-      res.status(200).json(users);
+    .then((user) => {
+      res.status(200).json(user);
     })
     .catch((error) => {
       res.status(404).json({
@@ -124,7 +124,7 @@ exports.modifyProfile = async (req, res, next) => {
       return;
     }
     const User = await user.findOne({ where: { id: req.params.id } });
-    if (user.id === res.locals.userId || res.locals.isAdmin) {
+    if (User.id === res.locals.userId || res.locals.isAdmin) {
       await User.update({
         firstname: req.body.firstname,
         lastname: req.body.lastname,
@@ -157,7 +157,7 @@ exports.deleteProfile = async (req, res, next) => {
       });
       return;
     }
-    if (user.id !== res.locals.userId && res.locals.isAdmin) {
+    if (User.id !== res.locals.userId && res.locals.isAdmin) {
       res.status(403).json({
         message: "Not authorized",
       });
