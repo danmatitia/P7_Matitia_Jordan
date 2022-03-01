@@ -66,7 +66,7 @@ exports.getOneMessages = async (req, res, next) => {
     });
     if (!messages) {
       res.status(404).json({
-        message: "post not found",
+        message: "message not found",
       });
       return;
     }

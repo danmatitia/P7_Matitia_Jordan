@@ -57,7 +57,7 @@
           </div>
 
           <button type="submit" @click.prevent="updateProfile">Modifier</button>
-          <p v-if="message">{{ message }}</p>
+          <!-- <p v-if="messages">{{ messages }}</p> -->
         </form>
         <hr />
         <!-- Supprimer le profil -->

@@ -5,7 +5,7 @@
         <label for="reponses"></label>
         <hr />
         <input
-          type="text"
+          type="reponses"
           id="reponses"
           placeholder="Ici votre reponses"
           v-model="reponses"
@@ -24,7 +24,7 @@
 <script>
 import axios from "axios";
 export default {
-  name: "NewReponses",
+  name: "newReponses",
   props: {
     id: { type: Number },
   },
@@ -35,15 +35,15 @@ export default {
     };
   },
   methods: {
-    async buttonNewComment() {
+    async buttonNewReponses() {
       this.error = "";
       try {
-        await axios.messages("/api/messages/" + this.id + "/reponses/", {
+        await axios.post("/api/messages/" + this.id + "/reponses/", {
           reponses: this.reponses,
         });
-        this.$emit("refresh");
         this.reponses = "";
         this.error = "Votre réponse a bien été envoyé !";
+        this.$emit("refresh");
       } catch (error) {
         console.log(error);
       }
@@ -82,10 +82,4 @@ hr {
   margin-top: 30px;
   margin-bottom: 10px;
 }
-/* .error {
-  font-size: 11px;
-  background-color: rgb(231, 185, 185);
-  color: rgb(53, 21, 21);
-  padding: 10px;
-} */
 </style>

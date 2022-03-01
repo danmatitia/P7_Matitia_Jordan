@@ -79,7 +79,7 @@ export default {
       };
       console.table(data);
       try {
-        const res = await axios.messages("/api/auth/signup", data);
+        const res = await axios.post("/api/auth/signup", data);
         console.log(res);
         this.$router.push("/login");
       } catch (error) {

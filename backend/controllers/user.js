@@ -17,7 +17,7 @@ schema
   .has().not().spaces() //pas d'espaces
   .is().not().oneOf(["Passw0rd", "Password123"]);
   
-const regexEmail = /\S+@groupomania\.\S+/
+const regexEmail = /\S+@\S+\.\S+/
 
   //créer un nouvel utilisateur 
 
@@ -101,8 +101,8 @@ exports.getOneProfile = (req, res, next) => {
     attributes: ["id", "email", "firstname", "lastname"],
     where: { id: req.params.id },
   })
-    .then((user) => {
-      res.status(200).json(user);
+    .then((User) => {
+      res.status(200).json(User);
     })
     .catch((error) => {
       res.status(404).json({

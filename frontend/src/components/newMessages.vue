@@ -1,5 +1,5 @@
 <template>
-  <div class="newmessages">
+  <div class="newMessages">
     <form method="post" @submit.prevent="buttonNewMessages">
       <h3>Nouveau message</h3>
       <div>
