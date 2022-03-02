@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
           allowNull: false,
         },
       });
-      models.Messages.hasMany(models.reponses, {
+      models.Messages.hasMany(models.Reponses, {
         foreignKey: {
           name: "idmessages",
           allowNull: false,

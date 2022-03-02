@@ -5,14 +5,15 @@ const { Reponses, user } = require("../models");
 exports.createReponses = (req, res, next) => {
   console.log(req.body);
   console.log(res.locals.userId)
+  console.log(req.params.idmessages)
   console.log(req.params.id)
   console.log(req.body.reponses)
-  if (!req.body.reponses) {
+  if (!req.body.reponses ) {
     return res.status(400).json({ error: "Merci de remplir le champ." });
   }
   Reponses.create({
     iduser: res.locals.userId,
-    id: req.params.id,
+    idmessages: req.params.id,
     reponses: req.body.reponses,
   })
     .then(() => res.status(200).json({ message: "Commentaire envoyé !" }))
@@ -41,7 +42,7 @@ exports.getAllReponses = (req, res, next) => {
 
 exports.deleteReponses = async (req, res, next) => {
   try {
-    const reponses = await Reponses.findOne({ where: { id: req.params.id } });
+    const reponses = await Reponses.findOne({ where: { id: req.params.id} });
     if (!reponses) {
       res.status(404).json({
         message: "message not found",

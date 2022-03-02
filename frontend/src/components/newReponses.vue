@@ -11,7 +11,7 @@
           v-model="reponses"
         />
       </div>
-      <button type="submit">Envoyer</button>
+      <button type="submit" >Envoyer</button>
     </form>
     <div class="error" v-if="error">
       {{ error }}
@@ -39,7 +39,7 @@ export default {
     async buttonNewReponses() {
       this.error = "";
       try {
-        await axios.post("/api/messages/" + this.id + "/reponses/", {
+        await axios.post("/api/messages/" + this.id + "/reponses", {
           reponses: this.reponses,
         });
         this.reponses = "";

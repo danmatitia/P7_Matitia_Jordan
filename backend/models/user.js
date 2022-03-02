@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
         onDelete: "cascade",
         hooks: true,
       });
-      models.user.hasMany(models.reponses, {
+      models.user.hasMany(models.Reponses, {
         foreignKey: "iduser",
         onDelete: "cascade",
         hooks: true,
