@@ -62,8 +62,7 @@ export default {
     // Pour charger le message selectionnés
     async fetchMessages() {
       try {
-        axios
-        .get("/api/messages/" + this.$route.params.id)
+        axios.get("/api/messages/" + this.$route.params.id)
         .then((res) => {
           this.messages = res.data;
         })
@@ -88,7 +87,7 @@ export default {
       this.loading = true;
       try {
         const { data } = await axios.get("/api/messages/" + this.$route.params.id + "/reponses")
-        this.response = data;
+        this.reponses = data;
       } catch (error) {
         if (error.status === 401) {
           this.$router.push("/login");
