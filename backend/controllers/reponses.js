@@ -5,14 +5,14 @@ const { Reponses, user } = require("../models");
 exports.createReponses = (req, res, next) => {
   console.log(req.body);
   console.log(res.locals.userId)
-  console.log(req.params.messagesId)
+  console.log(req.params.id)
   console.log(req.body.reponses)
   if (!req.body.reponses) {
     return res.status(400).json({ error: "Merci de remplir le champ." });
   }
   Reponses.create({
     iduser: res.locals.userId,
-    idmessages: res.locals.messagesId,
+    id: req.params.id,
     reponses: req.body.reponses,
   })
     .then(() => res.status(200).json({ message: "Commentaire envoyé !" }))
@@ -23,7 +23,7 @@ exports.createReponses = (req, res, next) => {
 
 exports.getAllReponses = (req, res, next) => {
   Reponses.findAll({
-    where: { idmessages: req.params.messagesId },
+    where: { id: req.params.id },
     order: [["updatedAt", "DESC"]],
     include: [{ model: user, attributes: ["firstName", "lastName", "id"] }],
   })
