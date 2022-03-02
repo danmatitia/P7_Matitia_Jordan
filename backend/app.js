@@ -25,7 +25,7 @@ app.use (bodyParser.json()); // Il va transformer le corps de la requête en obj
 /*utilisation des routes*/
 app.use("/images", express.static(path.join(__dirname, "images")));
 app.use("/api/auth", userRoutes);
-app.use("/api/reponses", reponsesRoutes);
+// app.use("/api/reponses", reponsesRoutes);
 app.use("/api/messages", messagesRoutes);
 
 app.use(helmet());

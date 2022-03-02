@@ -64,7 +64,6 @@ export default {
       try {
         axios
         .get("/api/messages/" + this.$route.params.id)
-        
         .then((res) => {
           this.messages = res.data;
         })

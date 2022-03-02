@@ -3,12 +3,16 @@ const { Reponses, user } = require("../models");
 
 //CREATE reponses 
 exports.createReponses = (req, res, next) => {
+  console.log(req.body);
+  console.log(res.locals.userId)
+  console.log(req.params.messagesId)
+  console.log(req.body.reponses)
   if (!req.body.reponses) {
     return res.status(400).json({ error: "Merci de remplir le champ." });
   }
   Reponses.create({
     iduser: res.locals.userId,
-    idmessages: req.params.messagesId,
+    idmessages: res.locals.messagesId,
     reponses: req.body.reponses,
   })
     .then(() => res.status(200).json({ message: "Commentaire envoyé !" }))

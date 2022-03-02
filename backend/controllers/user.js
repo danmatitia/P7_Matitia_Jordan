@@ -29,8 +29,7 @@ exports.signup = async (req, res) => {
   }
   if (!schema.validate(password)) {
     res.status(400).json({
-      error:
-        "le mot de passe doit contenir au moins 8 caractères dont 1 chiffre, 1 lettre majuscule et 1 minuscule",
+      error: "le mot de passe doit contenir au moins 8 caractères dont 1 chiffre, 1 lettre majuscule et 1 minuscule",
     });
   }
   const isFieldsEmpty = !email || !firstname || !lastname || !password;

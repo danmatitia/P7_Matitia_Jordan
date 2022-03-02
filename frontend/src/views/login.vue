@@ -62,7 +62,7 @@ export default {
             localStorage.setItem("id", res.data.userId);
             localStorage.setItem("isAdmin", res.data.isAdmin);
           }
-          this.$router.push("/profile");
+          this.$router.push("/");
         })
         .catch((error) => {
           alert("Authentification incorrect");
