@@ -64,11 +64,12 @@ export default {
       try {
         axios
         .get("/api/messages/" + this.$route.params.id)
+        
         .then((res) => {
           this.messages = res.data;
         })
         .catch((error) => {
-          console.log({ error });
+          console.log(error );
           if (error.status === 401) {
             this.$router.push("/login");
           }
@@ -85,16 +86,16 @@ export default {
     },
     // Pour charger les réponses du message
     async fetchReponses() {
+      this.loading = true;
       try {
-        const { data } = await axios.get(
-          "/api/messages/" + this.$route.params.id + "/reponses"
-        );
-        this.reponses = data;
+        const { data } = await axios.get("/api/messages/" + this.$route.params.id + "/reponses")
+        this.response = data;
       } catch (error) {
         if (error.status === 401) {
           this.$router.push("/login");
         }
       }
+      this.loading = false;
     },
     // Pour delete la réponse séléctionné
     async deleteReponses(id) {
@@ -126,8 +127,7 @@ export default {
       if (!isConfirm) {
         return;
       }
-      axios
-        .delete("/api/messages/" + this.$route.params.id)
+      axios.delete("/api/messages/" + this.$route.params.id)
         .then(() => {
           alert("Votre message a bien été supprimé !");
           this.$router.push("/");

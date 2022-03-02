@@ -36,11 +36,6 @@ const routes = [
     component: () => import('../components/oneMessages.vue'),
   },
   {
-    path: '/reponses/:id',
-    name: 'reponses',
-    component: () => import('../components/newReponses.vue'),
-  },
-  {
     path: '/404',
     name: '404',
     component: () => import('../views/404.vue'),

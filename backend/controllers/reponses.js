@@ -40,7 +40,7 @@ exports.deleteReponses = async (req, res, next) => {
     const reponses = await Reponses.findOne({ where: { id: req.params.id } });
     if (!reponses) {
       res.status(404).json({
-        message: "comment not found",
+        message: "message not found",
       });
       return;
     }
@@ -53,7 +53,7 @@ exports.deleteReponses = async (req, res, next) => {
     }
     await reponses.destroy();
     res.status(200).json({
-      message: "response deleted",
+      message: "réponse deleted",
     });
   } catch (error) {
     res.status(400).json({

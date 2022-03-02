@@ -21,7 +21,6 @@ axios.interceptors.response.use(
     const status = error.response.status;
     if (status === 401) {
       router.replace("/login");
-      console.log(status)
     } else if (status === 404) {
       router.replace("/404");
     }

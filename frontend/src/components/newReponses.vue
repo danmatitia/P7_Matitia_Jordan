@@ -25,6 +25,7 @@
 import axios from "axios";
 export default {
   name: "newReponses",
+
   props: {
     id: { type: Number },
   },
