@@ -8,7 +8,7 @@
       </router-link>
     </div>
     <p class="commDe">Publié par {{ user.firstname }} {{ user.lastname }}</p>
-    <router-link :to="`/messages/${id}`">Répondre ...</router-link>
+    <router-link :to="`/messages/${id}`">Commentaires ...</router-link>
   </div>
 </template>
 

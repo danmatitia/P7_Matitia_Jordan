@@ -14,12 +14,12 @@
           </button>
         </div>
         <!-- pour poster une reponse -->
-        <new-reponses @refresh="refreshReponses" :id="messages.id"></new-reponses>
+        <new-reponses @refresh="refreshReponses" :id = "messages.id"></new-reponses>
       </div>
       <!-- Début des reponses -->
       <h2>Réponses :</h2>
       <div ref="reponses">
-        <div class="card" :key="reponses.id" v-for="reponses of reponses">
+        <div class="card" :key="reponses.id" v-for= "reponses of reponses">
           <p>
             {{ reponses.reponses }}
           </p>
@@ -56,18 +56,19 @@ export default {
       reponses: [],
       me: 0,
       isAdmin: false,
+      loading: false,
     };
   },
   methods: {
     // Pour charger le message selectionnés
     async fetchMessages() {
       try {
-        axios.get("/api/messages/" + this.$route.params.id)
+        axios.get("/api/messages/" + this.$route.params.id )
         .then((res) => {
           this.messages = res.data;
         })
         .catch((error) => {
-          console.log(error );
+          console.log(error);
           if (error.status === 401) {
             this.$router.push("/login");
           }
@@ -86,7 +87,7 @@ export default {
     async fetchReponses() {
       this.loading = true;
       try {
-        const { data } = await axios.get("/api/messages/" + this.$route.params.id + "/reponses")
+        const { data } = await axios.get("/api/messages/" + this.$route.params.id + "/reponses/")
         this.reponses = data;
       } catch (error) {
         if (error.status === 401) {

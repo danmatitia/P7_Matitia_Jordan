@@ -5,7 +5,6 @@ const { Reponses, user } = require("../models");
 exports.createReponses = (req, res, next) => {
   console.log(req.body);
   console.log(res.locals.userId)
-  console.log(req.params.idmessages)
   console.log(req.params.id)
   console.log(req.body.reponses)
   if (!req.body.reponses ) {
@@ -16,7 +15,7 @@ exports.createReponses = (req, res, next) => {
     idmessages: req.params.id,
     reponses: req.body.reponses,
   })
-    .then(() => res.status(200).json({ message: "Commentaire envoyé !" }))
+    .then(() => res.status(200).json({ message: "Réponses envoyé !" }))
     .catch((error) => res.status(500).json(error));
 };
 
@@ -24,7 +23,7 @@ exports.createReponses = (req, res, next) => {
 
 exports.getAllReponses = (req, res, next) => {
   Reponses.findAll({
-    where: { id: req.params.id },
+    where: { idmessages: req.params.id },
     order: [["updatedAt", "DESC"]],
     include: [{ model: user, attributes: ["firstName", "lastName", "id"] }],
   })

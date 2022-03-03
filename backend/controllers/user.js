@@ -17,7 +17,7 @@ schema
   .has().not().spaces() //pas d'espaces
   .is().not().oneOf(["Passw0rd", "Password123"]);
   
-const regexEmail = /\S+@\S+\.\S+/
+const regexEmail = /\S+@groupomania.com+\.\S+/
 
   //créer un nouvel utilisateur 
 
@@ -25,7 +25,7 @@ exports.signup = async (req, res) => {
   // Valider les paramètres de la requète
   const { email, firstname, lastname, password } = req.body; 
   if (!regexEmail.test(email)) {
-    res.status(400).json({ error: "Email incorrect" });
+    res.status(400).json({ error: "Email incorrect, veuillez respecter le nom de domaine" });
   }
   if (!schema.validate(password)) {
     res.status(400).json({

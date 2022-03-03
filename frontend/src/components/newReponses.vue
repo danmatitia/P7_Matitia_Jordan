@@ -39,12 +39,14 @@ export default {
     async buttonNewReponses() {
       this.error = "";
       try {
-        await axios.post("/api/messages/" + this.id + "/reponses", {
+        await axios.post("/api/messages/" + this.id + "/reponses/", {
           reponses: this.reponses,
         });
+        this.$emit("refresh");
+
         this.reponses = "";
         this.error = "Votre réponse a bien été envoyé !";
-        this.$emit("refresh");
+        
       } catch (error) {
         console.log(error);
       }

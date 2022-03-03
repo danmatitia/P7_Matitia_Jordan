@@ -37,7 +37,7 @@ exports.getAllMessages = (_req, res) => {
       "createdAt",
       "updatedAt",
     ],
-    include: [{ model: user, attributes: ["firstname", "lastname"] }],
+    include: [{ model: user, attributes: ["firstname", "lastname","createdAt"] }],
   })
     .then((message) => {
       res.status(200).json(message);
