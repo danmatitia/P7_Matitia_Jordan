@@ -3,8 +3,6 @@ const jwt = require("jsonwebtoken"); // Crée et check un token d'identification
 
 require('dotenv').config();
 
-
-
 // MIDDLEWARE AUTH
 module.exports = (req, res, next) => {
   // Check si le token est bon

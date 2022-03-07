@@ -17,7 +17,7 @@ schema
   .has().not().spaces() //pas d'espaces
   .is().not().oneOf(["Passw0rd", "Password123"]);
   
-const regexEmail = /\S+@groupomania.com+\.\S+/
+const regexEmail = /\S+@\S+\.\S+/
 
   //créer un nouvel utilisateur 
 
@@ -52,7 +52,7 @@ exports.signup = async (req, res) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error });
+    res.status(500).json({error});
   }
 };
 console.log(user);
