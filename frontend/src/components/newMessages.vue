@@ -56,6 +56,7 @@ export default {
         data.append("title", this.title);
         data.append("content", this.content);
         data.append("image", this.file, this.file.name);
+        data.append("createdAt", new Date());
         //sans image
       } else {
         data.append("userId", this.userId);

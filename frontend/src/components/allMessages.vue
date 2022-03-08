@@ -9,6 +9,7 @@
       :user="Messages.user"
       :image="Messages.image"
       :id="Messages.id"
+      :createdAt="Messages.createdAt"
     />
   </div>
   <div v-else id="chargement">

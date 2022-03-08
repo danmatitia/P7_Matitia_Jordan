@@ -7,7 +7,7 @@
         <img :src="image" />
       </router-link>
     </div>
-    <p class="commDe">Publié par {{ user.firstname }} {{ user.lastname }}</p>
+    <p class="commDe">Publié par {{ user.firstname }} {{ user.lastname }}, le {{createdAt}}</p>
     <router-link :to="`/messages/${id}`">Commentaires ...</router-link>
   </div>
 </template>
@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  props: ["title", "content", "user", "id", "image"],
+  props: ["title", "content", "user", "id", "image","createdAt"],
 };
 </script>
 

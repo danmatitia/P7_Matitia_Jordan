@@ -17,7 +17,7 @@ schema
   .has().not().spaces() //pas d'espaces
   .is().not().oneOf(["Passw0rd", "Password123"]);
   
-const regexEmail = /\S+@\S+\.\S+/
+const regexEmail = /\S+@groupomania\.com/
 
   //créer un nouvel utilisateur 
 

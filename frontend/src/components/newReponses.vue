@@ -42,7 +42,7 @@ export default {
         await axios.post("/api/messages/" + this.id + "/reponses/", {
           reponses: this.reponses,
         });
-        this.$emit("refresh");
+        this.$emit("refresh"); //j'envoi les données au parents, c'est le parent qui écoute l'évènement que je créé niveau enfant.
 
         this.reponses = "";
         this.error = "Votre réponse a bien été envoyé !";

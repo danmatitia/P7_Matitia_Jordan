@@ -71,7 +71,7 @@ export default {
   },
   methods: {
     async buttonSignup() {
-      const data = {
+      const data = { 
         firstname: this.firstname,
         lastname: this.lastname,
         email: this.email,
@@ -83,6 +83,7 @@ export default {
         console.log(res);
         this.$router.push("/login");
       } catch (error) {
+        //console.log(error)
         alert(error?.response?.data?.error || "Une erreur est survenue.");
       }
     },

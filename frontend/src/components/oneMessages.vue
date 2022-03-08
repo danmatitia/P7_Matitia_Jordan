@@ -6,12 +6,12 @@
         <p>{{ messages.content }}</p>
         <img :src="messages.image" />
         <div>
-          <button class="gg"
+          <!--<button class="gg"
             v-if="messages.iduser === me || isAdmin"
             @click.prevent="updateMessages(messages.id)"
           >
             Modifier 
-          </button>
+          </button> -->
           <button
             v-if="messages.iduser === me || isAdmin"
             @click.prevent="deleteMessages(messages.id)"
@@ -30,7 +30,7 @@
             {{ reponses.reponses }}
           </p>
           <p class="commDe">
-            Publié par {{ reponses.user.firstName }} {{ reponses.user.lastName }}, le {"createdAt"}
+            Publié par {{ reponses.user.firstName }} {{ reponses.user.lastName }}, le {{reponses.createdAt}}
           </p>
           <div v-if="reponses.user.id === me || isAdmin">
             <button @click.prevent="deleteReponses(reponses.id)">
@@ -123,21 +123,27 @@ export default {
         });
     },
 
-   /* //Pour modifier le messages sélectionné
-      async updateMessages(id) {
+   // Pour modifier le messages sélectionné
+
+   /*   async updateMessages(id) {
+        let messages = localStorage.getItem("id");
+        const data = {
+        title: this.title,
+        content: this.content,
+      };
      try
       axios.put("/api/messages/" + this.$route.params.id)
         .then(() => {
           alert("Votre message a bien été modifié !");
-           this.dataProfile = res.data.user;
+           this.dataMessages = res.data.messages;
         })
             .catch((error) => {
           this.error = error;
           if (error.status === 401) {
             this.$router.push("/login");
-          }
+            };
         })
-      }
+      },
       */
 
     // Pour delete le message séléctionné
